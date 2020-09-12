@@ -50,6 +50,10 @@ function createImgCarousel(images) {
   const leftBtn = document.createElement("div");
   const rightBtn = document.createElement("div");
 
+  // Add attributes to child elements
+  leftBtn.classList.add("left-button");
+  rightBtn.classList.add("right-button");
+
   // Add content to child elements
   leftBtn.textContent = "<";
   rightBtn.textContent = ">";
@@ -89,7 +93,7 @@ function createImgCarousel(images) {
       // Set isChanging to true
       isChanging = true;
 
-      gsap.to(activeImg, { opacity: 0, x: 300, scale: 0.5, duration: 0.5 });
+      gsap.to(activeImg, { opacity: 0, x: 300, scaleY: 0.5, scaleX: -0.5, duration: 0.5 });
       gsap.to(prevImg, { opacity: 1, x: 0, scale: 1, duration: 0 });
 
       setTimeout(() => {
@@ -100,7 +104,7 @@ function createImgCarousel(images) {
         // Make new image active
         prevImg.style.display = "block";
         prevImg.classList.add("active");
-        gsap.from(prevImg, { opacity: 0, x: -300, scale: 0.5, duration: 0.5 });
+        gsap.from(prevImg, { opacity: 0, x: -300, scaleY: 0.5, scaleX: -0.5, duration: 0.5 });
       }, 500);
 
       setTimeout(() => {
@@ -125,7 +129,7 @@ function createImgCarousel(images) {
       // Set isChanging to true
       isChanging = true;
 
-      gsap.to(activeImg, { opacity: 0, x: -300, scale: 0.5, duration: 0.5 });
+      gsap.to(activeImg, { opacity: 0, x: -300, scaleY: 0.5, scaleX: -0.5, duration: 0.5 });
       gsap.to(nextImg, { opacity: 1, x: 0, scale: 1, duration: 0 });
 
       setTimeout(() => {
@@ -136,7 +140,7 @@ function createImgCarousel(images) {
         // Make new image active
         nextImg.style.display = "block";
         nextImg.classList.add("active");
-        gsap.from(nextImg, { opacity: 0, x: 300, scale: 0.5, duration: 0.5 });
+        gsap.from(nextImg, { opacity: 0, x: 300, scaleY: 0.5, scaleX: -0.5, duration: 0.5 });
       }, 500);
 
       setTimeout(() => {
