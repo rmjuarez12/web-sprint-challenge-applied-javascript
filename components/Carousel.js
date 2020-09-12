@@ -73,6 +73,9 @@ function createImgCarousel(images) {
   // Append the next button
   carouselContainer.appendChild(rightBtn);
 
+  // Helper for carousel arrows
+  let isChanging;
+
   // Add event listener for the left btn
   leftBtn.addEventListener("click", (e) => {
     // Get the current active image
@@ -82,18 +85,31 @@ function createImgCarousel(images) {
     const prevImg = activeImg.previousElementSibling;
 
     // Check if next sibling is an image. If not, don't run more code
-    gsap.to(activeImg, { opacity: 0, x: 100, scale: 0.5, duration: 0.5 });
+    if (prevImg.hasAttribute("src") && isChanging !== true) {
+      // Set isChanging to true
+      isChanging = true;
 
-    setTimeout(() => {
-      // Remove active from old image
-      activeImg.style.display = "none";
-      activeImg.classList.remove("active");
+      gsap.to(activeImg, { opacity: 0, x: 300, scale: 0.5, duration: 0.5 });
+      gsap.to(prevImg, { opacity: 1, x: 0, scale: 1, duration: 0 });
 
-      // Make new image active
-      prevImg.style.display = "block";
-      prevImg.classList.add("active");
-      gsap.from(prevImg, { opacity: 0, x: -100, scale: 0.5, duration: 0.5 });
-    }, 500);
+      setTimeout(() => {
+        // Remove active from old image
+        activeImg.style.display = "none";
+        activeImg.classList.remove("active");
+
+        // Make new image active
+        prevImg.style.display = "block";
+        prevImg.classList.add("active");
+        gsap.from(prevImg, { opacity: 0, x: -300, scale: 0.5, duration: 0.5 });
+      }, 500);
+
+      setTimeout(() => {
+        // Revert is changing back to false
+        isChanging = false;
+      }, 1000);
+    } else {
+      console.log("Next is NOT an image");
+    }
   });
 
   // Add event listener for the right btn
@@ -105,18 +121,31 @@ function createImgCarousel(images) {
     const nextImg = activeImg.nextElementSibling;
 
     // Check if next sibling is an image. If not, don't run more code
-    gsap.to(activeImg, { opacity: 0, x: -200, scale: 0.5, duration: 0.5 });
+    if (nextImg.hasAttribute("src")) {
+      // Set isChanging to true
+      isChanging = true;
 
-    setTimeout(() => {
-      // Remove active from old image
-      activeImg.style.display = "none";
-      activeImg.classList.remove("active");
+      gsap.to(activeImg, { opacity: 0, x: -300, scale: 0.5, duration: 0.5 });
+      gsap.to(nextImg, { opacity: 1, x: 0, scale: 1, duration: 0 });
 
-      // Make new image active
-      nextImg.style.display = "block";
-      nextImg.classList.add("active");
-      gsap.from(nextImg, { opacity: 0, x: 200, scale: 0.5, duration: 0.5 });
-    }, 500);
+      setTimeout(() => {
+        // Remove active from old image
+        activeImg.style.display = "none";
+        activeImg.classList.remove("active");
+
+        // Make new image active
+        nextImg.style.display = "block";
+        nextImg.classList.add("active");
+        gsap.from(nextImg, { opacity: 0, x: 300, scale: 0.5, duration: 0.5 });
+      }, 500);
+
+      setTimeout(() => {
+        // Revert is changing back to false
+        isChanging = false;
+      }, 1000);
+    } else {
+      console.log("Next is NOT an image");
+    }
   });
 
   return carouselContainer;
