@@ -37,7 +37,17 @@ getTabs
     // console.log to ensure we are getting data;
     console.log("Tabs Data", res);
   })
-  .catch((error) => console.log(error));
+  .catch((error) => {
+    // Get the element in which we will insert the card
+    const errorElement = document.querySelector(".errors-container");
+    const errorContainer = document.createElement("p");
+
+    // Add ther error content
+    errorContainer.textContent = `${error} for tabs request`;
+
+    // Append error
+    errorElement.appendChild(errorContainer);
+  });
 
 // Component for creating tab elements
 function tabCreator(tab) {

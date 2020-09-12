@@ -29,25 +29,37 @@ const APIUrl = "https://lambda-times-api.herokuapp.com/articles";
 const getArticles = axios.get(APIUrl);
 
 // Create a Promise
-getArticles.then((res) => {
-  // Get all articles by category
-  const allArticlesByCat = res.data.articles;
+getArticles
+  .then((res) => {
+    // Get all articles by category
+    const allArticlesByCat = res.data.articles;
 
-  // Get the element in which we will insert the card
-  const cardContainer = document.querySelector(".cards-container");
+    // Get the element in which we will insert the card
+    const cardContainer = document.querySelector(".cards-container");
 
-  // Do a for loop to cycle through each object property in allArticlesByCat
-  for (const articles in allArticlesByCat) {
-    // Cycle through each object that has an array of article
-    allArticlesByCat[articles].forEach((article) => {
-      const newCard = cardCreator(article, articles);
-      cardContainer.appendChild(newCard);
-    });
-  }
+    // Do a for loop to cycle through each object property in allArticlesByCat
+    for (const articles in allArticlesByCat) {
+      // Cycle through each object that has an array of article
+      allArticlesByCat[articles].forEach((article) => {
+        const newCard = cardCreator(article, articles);
+        cardContainer.appendChild(newCard);
+      });
+    }
 
-  // Console.log the response
-  console.log("Cards Data", res);
-});
+    // Console.log the response
+    console.log("Cards Data", res);
+  })
+  .catch((error) => {
+    // Get the element in which we will insert the card
+    const errorElement = document.querySelector(".errors-container");
+    const errorContainer = document.createElement("p");
+
+    // Add ther error content
+    errorContainer.textContent = `${error} for cards request`;
+
+    // Append error
+    errorElement.appendChild(errorContainer);
+  });
 
 // Create a component to create a card
 function cardCreator(card, category) {
