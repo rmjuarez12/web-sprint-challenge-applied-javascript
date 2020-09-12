@@ -46,6 +46,8 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 **A: Components are functions that helps us add HTML into the DOM with a single function. This allows us to use what's called the DRY(Don't Repeat Yourself) principle, which basically means we can repeat this function as much as we need. This is very beneficial when we are working with big amounts of data that will be used the same way. These data could be an array of object received from an API or a database.**
 
+---
+
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
 ## Instructions
@@ -63,10 +65,10 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 #### Launching the App
 
-- [ ] Navigate to the root of the project with your command line
-- [ ] Run `npm install` to download the dependencies listed in the `package.json` file
-- [ ] Run `npm start` to compile the project and serve it
-- [ ] Navigate Chrome to the URL indicated in the output of the `npm start` command
+- [x] Navigate to the root of the project with your command line
+- [x] Run `npm install` to download the dependencies listed in the `package.json` file
+- [x] Run `npm start` to compile the project and serve it
+- [x] Navigate Chrome to the URL indicated in the output of the `npm start` command
 
 ### Task 2: Project Requirements
 
