@@ -28,13 +28,23 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. What is the DOM?
 
+**A: DOM stands for Document Object Model. This is the object of the entire HTML page, which allows to access the elements that are within it. The DOM is what makes manipulating and accessing the elements within the HTML page possible.**
+
 2. What is an event?
+
+**A: An event is something that occurs when there is a type of JavaScript function that is executed as a result of user interaction, or when a website has loaded or unloaded. Events is what helps make a website dynamic using JavaScript. It can range from something as simple as hovering your mouse over an element, or clicking on top of an element, in order to manipulate the HTML page's DOM.**
 
 3. What is an event listener?
 
+**A: An event listener is the action itself that triggers a JavaScript function/callback. As mentioned above, events help manipulate the DOM. These are attached to the specific element responsible to trigger an specific event.**
+
 4. Why would we convert a NodeList into an Array?
 
+**A: Different from an HTMLCollection, a NodeList gives us access to all HTML elements it returns. This is very beneficial, since, with this, we can manipulate each and all elements that are inside that NodeList by using a forEach loop. This is even more efficient, since we can repeat the same action to multiple elements with less lines of code and less work.**
+
 5. What is a component?
+
+**A: Components are functions that helps us add HTML into the DOM with a single function. This allows us to use what's called the DRY(Don't Repeat Yourself) principle, which basically means we can repeat this function as much as we need. This is very beneficial when we are working with big amounts of data that will be used the same way. These data could be an array of object received from an API or a database.**
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
