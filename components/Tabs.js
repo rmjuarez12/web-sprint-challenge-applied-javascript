@@ -50,6 +50,39 @@ function tabCreator(tab) {
   // Add the content for the tab
   tabContainer.textContent = tab;
 
+  // Add event listener when a tab is clicked
+  tabContainer.addEventListener("click", (e) => {
+    // Get all tabs
+    const allTabs = document.querySelectorAll(".tabs .tab");
+
+    // First, ensure to remove the active class from all tabs
+    allTabs.forEach((element) => {
+      element.classList.remove("active-tab");
+    });
+
+    // Then, add the active class to the element clicked
+    tabContainer.classList.add("active-tab");
+
+    // Get all cards
+    const allCards = document.querySelectorAll(".cards-container .card");
+
+    // if a certain card contains a the class of the clicked tab, keep it. Otherwise, hide it
+    allCards.forEach((element) => {
+      // For node.js, remove the js
+      let tabName = tab;
+
+      if (tabName.includes(".")) {
+        tabName = tabName.substr(0, tab.lastIndexOf("."));
+      }
+
+      if (element.classList.contains(tabName)) {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    });
+  });
+
   // Return the tab element
   return tabContainer;
 }

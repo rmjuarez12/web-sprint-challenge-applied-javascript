@@ -55,7 +55,7 @@ function cardCreator(card, category) {
   const cardContainer = document.createElement("div");
 
   // Add attributes to main container
-  cardContainer.classList.add("card");
+  cardContainer.classList.add("card", category);
 
   // Create the card's child elements
   const cardHeadline = document.createElement("div");
@@ -87,6 +87,11 @@ function cardCreator(card, category) {
 
   cardChildren.forEach((element) => {
     cardContainer.appendChild(element);
+  });
+
+  // Add an event listener to console.log headline when user clicks card
+  cardContainer.addEventListener("click", (e) => {
+    console.log(card.headline);
   });
 
   // Return the created card element
