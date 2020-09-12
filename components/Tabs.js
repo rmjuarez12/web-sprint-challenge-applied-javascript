@@ -35,7 +35,7 @@ getTabs
     });
 
     // console.log to ensure we are getting data;
-    console.log(res);
+    console.log("Tabs Data", res);
   })
   .catch((error) => console.log(error));
 
